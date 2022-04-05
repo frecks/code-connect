@@ -86,8 +86,20 @@ def get_ipc_socket(max_idle_time: int = DEFAULT_MAX_IDLE_TIME) -> Path:
 
     # List all possible sockets for the current user
     # Some of these are obsolete and not actively listening anymore
-    uid = os.getuid()
-    socks = sort_by_access_timestamp(Path(f"/run/user/{uid}/").glob("vscode-ipc-*.sock"))
+    # uid = os.getuid()
+    # socks = sort_by_access_timestamp(Path(f"/run/user/{uid}/").glob("vscode-ipc-*.sock"))
+
+    # The ss command can theoretically ensure that we only get sockets
+    # that are actively listening. It also works for sockets that aren't
+    # in /run/user/{uid}/. WSL 2 sockets are in /tmp/ because the
+    # /run/user/{uid}/ folders are created by systemd, which isn't used
+    # in WSL 2. The downside to this approach is that we would need some
+    # way to differentiate between users in shared systems.
+    socks = sort_by_access_timestamp(
+        map(
+            Path, sp.getoutput("ss -lx | grep vscode-ipc-.*\\.sock | awk '{print $5}'").splitlines()
+        )
+    )
 
     # Only consider the ones that were active N seconds ago
     now = time.time()
