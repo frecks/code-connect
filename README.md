@@ -1,6 +1,6 @@
 # code-connect
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/chvolkmann/code-connect?label=version&style=flat-square)
+![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/frecks/code-connect?label=version&style=flat-square)
 
 Open a file in your locally running Visual Studio Code instance from arbitrary terminal connections.
 
@@ -40,7 +40,7 @@ Afterwards, you should have a folder `.vscode-server` in your home directory.
 With [fisher](https://github.com/jorgebucaran/fisher)
 
 ```fish
-fisher install chvolkmann/code-connect
+fisher install frecks/code-connect
 ```
 
 This downloads [`code_connect.py`](./bin/code_connect.py) along with two functions. See [`functions/code.fish`](./functions/code.fish) and [`functions/code-connect.fish`](./functions/code-connect.fish)
@@ -50,13 +50,13 @@ You can autocomplete the repository name in subsequent commands, e.g. `fisher up
 #### Updating
 
 ```fish
-fisher update chvolkmann/code-connect
+fisher update frecks/code-connect
 ```
 
 #### Uninstalling
 
 ```fish
-fisher remove chvolkmann/code-connect
+fisher remove frecks/code-connect
 ```
 
 ### Bash
@@ -66,7 +66,7 @@ fisher remove chvolkmann/code-connect
 With [`bash/install.sh`](./bash/install.sh)
 
 ```bash
-curl -sS https://raw.githubusercontent.com/chvolkmann/code-connect/main/bash/install.sh | bash
+curl -sS https://raw.githubusercontent.com/frecks/code-connect/main/bash/install.sh | bash
 ```
 
 This downloads [`code_connect.py`](./bin/code_connect.py) along with two scripts and sets up aliases in your `.bashrc` for you. See [`bash/code.sh`](./bash/code.sh) and [`bash/code-connect.sh`](./bash/code-connect.sh)
@@ -76,7 +76,7 @@ This downloads [`code_connect.py`](./bin/code_connect.py) along with two scripts
 With [`bash/uninstall.sh`](./bash/uninstall.sh)
 
 ```bash
-curl -sS https://raw.githubusercontent.com/chvolkmann/code-connect/main/bash/uninstall.sh | bash
+curl -sS https://raw.githubusercontent.com/frecks/code-connect/main/bash/uninstall.sh | bash
 ```
 
 Deletes the aliases from `~/.bashrc` and removes the folder `~/.code-connect`
